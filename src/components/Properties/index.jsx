@@ -1,13 +1,8 @@
-import React from 'react'
-import { Container } from './style'
+import React from "react";
+import { Container } from "./style";
 
 const Properties = () => {
-  return (
-    <Container>
-     <h1>Properties</h1>
-    </Container>
-    
-  )
-}
+  return <Container>Properties</Container>;
+};
 
-export default Properties
+export default Properties;
