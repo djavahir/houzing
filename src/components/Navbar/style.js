@@ -6,23 +6,30 @@ display: flex;
 flex-direction: column;
 justify-content: center;
 `;
+
+const Main = styled.div`
+display: flex;
+justify-content: center;
+background: var(--colorPrimary);
+`;
+
 const Wrapper = styled.div`
 display: flex;
 align-items: center;
 justify-content: space-between;
-background: var(--colorPrimary);
 color: #ffff;
 padding: var(--padding);
 height: 64px;
 font-size: 16px;
 max-width: 1440px;
+width: 100%;
 `;
 
 const Section = styled.div`
 display: flex;
 align-items: center;
 gap: 11.62px;
-cursor: ${({ logo }) => logo && 'pointer'};
+cursor: ${({ logos }) => logos && 'pointer'};
 .active{
  color: red;
 }
@@ -43,4 +50,4 @@ padding: 0 32px;
 color: #ffff;
 `;
 
-export { Container, Wrapper, Section, Logo, Button, Link }
+export { Main, Container, Wrapper, Section, Logo, Button, Link }
