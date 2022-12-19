@@ -5,7 +5,7 @@ import { Container } from "./style";
 const Home = () => {
   return (
     <Container>
-      <h1>Input</h1>
+      <h1>input</h1>
       <Input placeholder={"test"} />
     </Container>
   );
