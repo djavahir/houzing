@@ -21,7 +21,7 @@ color: #ffff;
 padding: var(--padding);
 height: 64px;
 font-size: 16px;
-max-width: 1440px;
+/* max-width: 1440px; */
 width: 100%;
 `;
 
