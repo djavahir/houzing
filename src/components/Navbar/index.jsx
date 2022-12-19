@@ -1,8 +1,9 @@
 import React from "react";
-import { Button, Link, Container, Logo, Section, Wrapper, Main } from "./style";
+import { Link, Container, Logo, Section, Wrapper, Main } from "./style";
 import { Outlet, useNavigate } from "react-router-dom";
 import logoImg from "../../assets/icon/logo.svg";
 import navbar from "../../utils/navbar";
+import Button from "../Generics/Button";
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -15,16 +16,24 @@ const Navbar = () => {
             <h3>Houzing</h3>
           </Section>
           <Section>
-            {navbar.map(({ title, path }, index) => {
+            {navbar.map(({ title, path, hidden }, index) => {
               return (
-                <Link key={index} to={path}>
-                  {title}
-                </Link>
+                !hidden && (
+                  <Link
+                    className={({ isActive }) => isActive && "active"}
+                    key={index}
+                    to={path}
+                  >
+                    {title}
+                  </Link>
+                )
               );
             })}
           </Section>
           <Section>
-            <Button>Sign in</Button>
+            <Button onClick={() => navigate("/signin")} type={"dark"}>
+              Sign in
+            </Button>
           </Section>
         </Wrapper>
       </Main>

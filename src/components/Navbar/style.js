@@ -35,9 +35,6 @@ cursor: ${({ logos }) => logos && 'pointer'};
 }
 `;
 
-const Button = styled.button`
-
-`;
 
 const Logo = styled.img`
 width: 30.39px;
@@ -50,4 +47,4 @@ padding: 0 32px;
 color: #ffff;
 `;
 
-export { Main, Container, Wrapper, Section, Logo, Button, Link }
+export { Main, Container, Wrapper, Section, Logo, Link }
