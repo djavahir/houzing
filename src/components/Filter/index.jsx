@@ -16,7 +16,7 @@ const Filter = () => {
   const minPriceRef = useRef();
   const maxPriceRef = useRef();
 
-  const menu = (
+  const menu =  (
     <MenuWrapper>
       <h1 className="subTitle">Address</h1>
       <Section>
@@ -38,6 +38,7 @@ const Filter = () => {
       </Section>
     </MenuWrapper>
   );
+
   return (
     <Container>
       <Input
@@ -45,9 +46,10 @@ const Filter = () => {
         placeholder={"Enter an address, neighborhood, city, or ZIP code"}
       />
       <Dropdown
-        overlay={menu}
+        dropdownRender={()=>menu}
         placement="bottomRight"
         arrow={{ pointAtCenter: true }}
+        trigger={["click"]}
       >
         <div>
           <Button type={"light"}>
