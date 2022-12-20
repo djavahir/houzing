@@ -16,7 +16,7 @@ const Filter = () => {
   const minPriceRef = useRef();
   const maxPriceRef = useRef();
 
-  const menu =  (
+  const menu = (
     <MenuWrapper>
       <h1 className="subTitle">Address</h1>
       <Section>
@@ -46,7 +46,7 @@ const Filter = () => {
         placeholder={"Enter an address, neighborhood, city, or ZIP code"}
       />
       <Dropdown
-        dropdownRender={()=>menu}
+        dropdownRender={() => menu}
         placement="bottomRight"
         arrow={{ pointAtCenter: true }}
         trigger={["click"]}
@@ -55,7 +55,6 @@ const Filter = () => {
           <Button type={"light"}>
             <Icons.Filter /> Advanced
           </Button>
-          <h1>salom</h1>
         </div>
       </Dropdown>
       <Button>
