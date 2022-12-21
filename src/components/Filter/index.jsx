@@ -52,12 +52,12 @@ const Filter = () => {
         trigger={["click"]}
       >
         <div>
-          <Button type={"light"}>
+          <Button width={131} type={"light"}>
             <Icons.Filter /> Advanced
           </Button>
         </div>
       </Dropdown>
-      <Button>
+      <Button width={240}>
         <Icons.Search /> Search
       </Button>
     </Container>
