@@ -59,7 +59,7 @@ font-style: normal;
 font-weight: 400;
 font-size: 16px;
 line-height: 24px;
-color: white;
+color: rgba(255, 255, 255, 1);
 margin-top: 8px;
 `;
 
@@ -71,6 +71,7 @@ font-size: 28px;
 line-height: 36px;
 letter-spacing: -0.02em;
 color: white;
+margin-top: 10px;
 `;
 
 
