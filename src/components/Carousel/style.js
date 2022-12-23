@@ -64,7 +64,7 @@ color: rgba(255, 255, 255, 1);
 margin-top: 8px;
 `;
 
-Content.Price=styled.div`
+Content.Price = styled.div`
 font-family: 'Montserrat';
 font-style: normal;
 font-weight: 600;
@@ -75,5 +75,17 @@ color: white;
 margin-top: 10px;
 `;
 
+const Button = styled.button`
+margin-top:24px;
+width: 180px;
+height: 44px;
+border: 1px solid #FFFFFF;
+border-radius: 2px;
+background: none;
+color: #FFFFFF;
+font-family: 'Montserrat';
+font-size: 14px;
+`;
 
-export { Container, Arrow, Img, Blur, Content }
+
+export { Container, Arrow, Button, Img, Blur, Content }
