@@ -2,10 +2,11 @@ import styled from "styled-components";
 
 
 const Container = styled.div`
-width: 380px;
 position: relative;
+width: 100%;
+max-width: 380px;
+min-width: 343px;
 height: 429px;
-margin: 0 20px;
 filter: drop-shadow(0px 20px 38px rgba(0,0,0,0.06)) drop-shadow(0px 7px 46px rgba(0,0,0,0.06))
 drop-shadow(0px 8px 15px rgba(0,0,0,0.06));
 border: 1px solid #E6E9EC;

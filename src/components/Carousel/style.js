@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 
 const Container = styled.div`
-height: 571px;
+height: fit-content;
 position: relative;
 `;
 
@@ -43,6 +43,7 @@ align-items: center;
 justify-content: center;
 flex-direction: column;
 `;
+
 Content.Title = styled.h1`
 font-family: 'Montserrat';
 font-style: normal;

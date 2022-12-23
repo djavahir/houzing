@@ -29,6 +29,7 @@ const HouseCard = ({ data = {} }) => {
     attachments,
     country,
     description,
+    category,
   } = data;
   return (
     <Container>
@@ -40,7 +41,7 @@ const HouseCard = ({ data = {} }) => {
         <div className="subTitle inline">
           {city},{country},{description}
         </div>
-        <div className="info">{address || "Quincy St, Brooklyn, NY, USA"}</div>
+        <div className="info">{address || "Quincy St, Brooklyn, NY, USA"} -{category?.name || 'category'}</div>
         <Details>
           <Details.Item>
             <Icons src={Bed} />
