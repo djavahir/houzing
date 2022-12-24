@@ -5,6 +5,7 @@ import Slider from "react-slick";
 import { useNavigate } from "react-router-dom";
 
 const { REACT_APP_BASE_URL: url } = process.env;
+
 const settings = {
   className: "center",
   centerMode: true,
@@ -27,7 +28,6 @@ const Category = () => {
         setData(res?.data || []);
       });
   }, []);
-  console.log(data);
   return (
     <Container>
       <Title>
@@ -40,7 +40,7 @@ const Category = () => {
         {data.map((value) => {
           return (
             <CategoryCard
-              onClick={() => navigate(`/properties?category=${value?.name}`)}
+              onClick={() => navigate(`/properties?category_id=${value?.id}`)}
               key={value.id}
               data={value}
             />
