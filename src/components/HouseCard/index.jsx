@@ -19,7 +19,7 @@ import Ruler from "../../assets/icon/ruler.svg";
 import Love from "../../assets/icon/love.svg";
 import Resize from "../../assets/icon/resize.svg";
 
-const HouseCard = ({ data = {} }) => {
+const HouseCard = ({ data = {},gap }) => {
   const {
     address,
     houseDetails,
@@ -32,7 +32,7 @@ const HouseCard = ({ data = {} }) => {
     category,
   } = data;
   return (
-    <Container>
+    <Container gap={gap}>
       <Button>Featured</Button>
       <Button right>For sale</Button>
       <Img src={(attachments && attachments[0]?.imgPath) || noImg} />

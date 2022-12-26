@@ -7,10 +7,15 @@ width: 100%;
 max-width: 380px;
 min-width: 343px;
 height: 429px;
+:hover{
 filter: drop-shadow(0px 20px 38px rgba(0,0,0,0.06)) drop-shadow(0px 7px 46px rgba(0,0,0,0.06))
 drop-shadow(0px 8px 15px rgba(0,0,0,0.06));
+}
+cursor: pointer;
 border: 1px solid #E6E9EC;
 border-radius: 3px;
+background: white;
+margin: ${({ gap }) => { return gap && `0 ${gap}px` }};
 `;
 
 const Img = styled.img`
@@ -82,8 +87,8 @@ left: ${({ right }) => !right && "20px"};
 right: ${({ right }) => right && "20px"};
 cursor: pointer;
 `;
- 
-const User=styled.img`
+
+const User = styled.img`
 width:38px;
 height:38px;
 border-radius:50%;
@@ -93,4 +98,4 @@ right:23px;
 bottom: 190px
 `;
 
-export { User,Container, Button, Img, Content, Details, Divider, Like, Icons }
+export { User, Container, Button, Img, Content, Details, Divider, Like, Icons }
