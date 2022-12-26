@@ -85,6 +85,10 @@ background: none;
 color: #FFFFFF;
 font-family: 'Montserrat';
 font-size: 14px;
+:active{
+ transform: scale(0.9);
+}
+cursor: grab;
 `;
 
 
