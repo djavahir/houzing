@@ -31,7 +31,7 @@ align-items: center;
 gap: 11.62px;
 cursor: ${({ logos }) => logos && 'pointer'};
 .active{
- color: red;
+ color: yellowgreen;
 }
 `;
 
