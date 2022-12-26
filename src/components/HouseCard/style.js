@@ -80,6 +80,7 @@ color: #FFFFFF;
 margin-top:20px;
 left: ${({ right }) => !right && "20px"};
 right: ${({ right }) => right && "20px"};
+cursor: pointer;
 `;
  
 const User=styled.img`
