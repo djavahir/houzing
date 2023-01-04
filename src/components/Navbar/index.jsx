@@ -5,6 +5,7 @@ import logoImg from "../../assets/icon/logo.svg";
 import navbar from "../../utils/navbar";
 import Button from "../Generics/Button";
 import Filter from "../Filter";
+import Footer from "../Footer";
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -40,6 +41,7 @@ const Navbar = () => {
       </Main>
       <Filter />
       <Outlet />
+      <Footer />
     </Container>
   );
 };
