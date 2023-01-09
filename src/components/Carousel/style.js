@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 
 const Container = styled.div`
-height: fit-content;
+height: 571px;
 position: relative;
 `;
 
