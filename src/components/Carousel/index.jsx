@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import { Arrow, Blur,Button, Container, Content, Img } from "./style";
+import { Arrow, Blur, Button, Container, Content, Img } from "./style";
 import { Carousel } from "antd";
 import Img1 from "../../assets/imgs/house1.jpg";
 import Img2 from "../../assets/imgs/house2.jpg";
@@ -18,12 +18,9 @@ const GenCarousel = () => {
     if (name === "right") slider.current.next();
   };
 
-  const onChange = (currentSlide) => {
-    console.log(currentSlide);
-  };
   return (
     <Container>
-      <Carousel ref={slider} afterChange={onChange}>
+      <Carousel ref={slider}>
         <Img src={Img1} />
         <Img src={Img2} />
       </Carousel>
