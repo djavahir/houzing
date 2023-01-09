@@ -19,7 +19,7 @@ import Ruler from "../../assets/icon/ruler.svg";
 import Love from "../../assets/icon/love.svg";
 import Resize from "../../assets/icon/resize.svg";
 
-const HouseCard = ({ data = {},gap }) => {
+const HouseCard = ({ data = {}, gap, onClick }) => {
   const {
     address,
     houseDetails,
@@ -32,50 +32,54 @@ const HouseCard = ({ data = {},gap }) => {
     category,
   } = data;
   return (
-    <Container gap={gap}>
-      <Button>Featured</Button>
-      <Button right>For sale</Button>
-      <Img src={(attachments && attachments[0]?.imgPath) || noImg} />
-      <Content>
-        <User src={(attachments && attachments[1]?.imgPath) || user} />
-        <div className="subTitle inline">
-          {city},{country},{description}
-        </div>
-        <div className="info">{address || "Quincy St, Brooklyn, NY, USA"} -{category?.name || 'category'} {houseDetails?.room || 0}-rooms 
-        </div>
-        <Details>
-          <Details.Item>
-            <Icons src={Bed} />
-            <div className="info">{houseDetails?.beds || 0} Beds</div>
-          </Details.Item>
-          <Details.Item>
-            <Icons src={Bath} />
-            <div className="info">{houseDetails?.bath || 0} Baths</div>
-          </Details.Item>
-          <Details.Item>
-            <Icons src={Car} />
-            <div className="info">{houseDetails?.garage || 0} Garage</div>
-          </Details.Item>
-          <Details.Item>
-            <Icons src={Ruler} />
-            <div className="info">{houseDetails?.area || 0} Sq Ft</div>
-          </Details.Item>
-        </Details>
-      </Content>
-      <Divider />
-      <Content footer>
-        <Details.Item footer>
-          <div className="info">
-            <del>${price || 0}/mo</del>
+    <div style={{display:"flex"}} onClick={onClick}>
+      <Container gap={gap}>
+        <Button>Featured</Button>
+        <Button right>For sale</Button>
+        <Img src={(attachments && attachments[0]?.imgPath) || noImg} />
+        <Content>
+          <User src={(attachments && attachments[1]?.imgPath) || user} />
+          <div className="subTitle inline">
+            {city},{country},{description}
           </div>
-          <div className="subTitle">${salePrice || 0}/mo</div>
-        </Details.Item>
-        <Details.Item icon>
-          <Like src={Resize} />
-          <Like src={Love} />
-        </Details.Item>
-      </Content>
-    </Container>
+          <div className="info">
+            {address || "Quincy St, Brooklyn, NY, USA"} -
+            {category?.name || "category"} {houseDetails?.room || 0}-rooms
+          </div>
+          <Details>
+            <Details.Item>
+              <Icons src={Bed} />
+              <div className="info">{houseDetails?.beds || 0} Beds</div>
+            </Details.Item>
+            <Details.Item>
+              <Icons src={Bath} />
+              <div className="info">{houseDetails?.bath || 0} Baths</div>
+            </Details.Item>
+            <Details.Item>
+              <Icons src={Car} />
+              <div className="info">{houseDetails?.garage || 0} Garage</div>
+            </Details.Item>
+            <Details.Item>
+              <Icons src={Ruler} />
+              <div className="info">{houseDetails?.area || 0} Sq Ft</div>
+            </Details.Item>
+          </Details>
+        </Content>
+        <Divider />
+        <Content footer>
+          <Details.Item footer>
+            <div className="info">
+              <del>${price || 0}/mo</del>
+            </div>
+            <div className="subTitle">${salePrice || 0}/mo</div>
+          </Details.Item>
+          <Details.Item icon>
+            <Like src={Resize} />
+            <Like src={Love} />
+          </Details.Item>
+        </Content>
+      </Container>
+    </div>
   );
 };
 

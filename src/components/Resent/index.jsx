@@ -34,7 +34,7 @@ const Resent = () => {
       <Title>
         <SubTitle className="subTitle">Recent Properties for Rent</SubTitle>
         <Info className="info">
-        Nulla quis curabitur velit volutpat auctor bibendum consectetur sit.
+          Nulla quis curabitur velit volutpat auctor bibendum consectetur sit.
         </Info>
       </Title>
       <Slider {...settings}>
@@ -42,7 +42,7 @@ const Resent = () => {
           return (
             <HouseCard
               gap={20}
-              onClick={() => navigate(`/properties?category_id=${value?.id}`)}
+              onClick={() => navigate(`/properties/${value?.id}`)}
               key={value.id}
               data={value}
             />

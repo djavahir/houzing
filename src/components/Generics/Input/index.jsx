@@ -13,6 +13,7 @@ export const Input = forwardRef(
       height,
       placeholder,
       icon,
+      onFocus,
     },
     ref
   ) => {
@@ -30,6 +31,7 @@ export const Input = forwardRef(
           type={type}
           width={width}
           height={height}
+          onFocus={onFocus}
         />
       </Wrapper>
     );

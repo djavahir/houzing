@@ -41,6 +41,10 @@ padding-left: ${({ icon }) => icon ? `35px` : "16px"};
 border-radius:2px;
 border: 1px solid #E6E9EC ;
 outline:none;
+:focus{
+border:1px solid #0061df;  
+}
+
 /* ${getType} */
 `;
 
