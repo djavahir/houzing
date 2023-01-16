@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Container, Span, Content } from "../Signin/style";
 import { Button, Input } from "../Generics";
 import { useNavigate } from "react-router-dom";
+import { Link } from "../HouseItem/style";
 
 const Signin = () => {
   const [body, setBody] = useState({});
@@ -16,7 +17,7 @@ const Signin = () => {
     });
   };
 
-  const onSubmit = () => { 
+  const onSubmit = () => {
     setIsLoggedIn(true);
     fetch("https://houzing-app.herokuapp.com/api/public/auth/login", {
       method: "POST",
@@ -40,7 +41,6 @@ const Signin = () => {
         setError(true);
         setIsLoggedIn(false);
       });
-
   };
 
   return (
@@ -59,7 +59,8 @@ const Signin = () => {
           type="password"
           placeholder="password"
         />
-        {error && <Span>Email or Password is incorrect!</Span>}
+        <Link signin href="">Forgot password?</Link>
+        {error && <Span>email or password is incorrect!</Span>}
         <Button onClick={onSubmit} width="%">
           {isLoggedIn ? "waiting..." : "Login"}
         </Button>

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Container, Info, SubTitle, Title } from "./style";
-import HouseCard from "../HouseCard";
+import HouseCard from "../../HouseCard";
 import Slider from "react-slick";
 import { useNavigate } from "react-router-dom";
 
@@ -17,7 +17,7 @@ const settings = {
   dots: true,
   appenDots: (dots) => <h1>{dots}</h1>,
 };
-const Resent = () => {
+const Similar = () => {
   const navigate = useNavigate();
   const [data, setData] = useState([]);
 
@@ -32,7 +32,7 @@ const Resent = () => {
   return (
     <Container >
       <Title>
-        <SubTitle className="subTitle">Recent Properties for Rent</SubTitle>
+        <SubTitle className="subTitle">Similar listings</SubTitle>
         <Info className="info">
           Nulla quis curabitur velit volutpat auctor bibendum consectetur sit.
         </Info>
@@ -53,4 +53,4 @@ const Resent = () => {
   );
 };
 
-export default Resent;
+export default Similar;

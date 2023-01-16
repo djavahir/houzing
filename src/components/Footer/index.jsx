@@ -29,17 +29,17 @@ const Footer = () => {
           <SubTitle>Contact Us</SubTitle>
           <Content.Item>
             <Img src={Location} />
-            <Info info>
+            <Info info="true">
               329 Queensberry Street, North Melbourne VIC 3051, Australia.
             </Info>
           </Content.Item>
           <Content.Item>
             <Img src={Phone} />
-            <Info info>123 456 7890</Info>
+            <Info info="true">123 456 7890</Info>
           </Content.Item>
           <Content.Item>
             <Img src={Email} />
-            <Info info>support@houzing.com</Info>
+            <Info info="true">support@houzing.com</Info>
           </Content.Item>
           <Content.Img>
             <Img src={Facebook} />
@@ -79,7 +79,9 @@ const Footer = () => {
           <H3>Houzing</H3>
         </Section>
         <Section gap>
-          <Info info>Copyright © 2021 CreativeLayers. All Right Reserved.</Info>
+          <Info info="true">
+            Copyright © 2021 CreativeLayers. All Right Reserved.
+          </Info>
           <Img src={Up} />
         </Section>
       </Last>

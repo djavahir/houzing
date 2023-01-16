@@ -68,6 +68,7 @@ padding-top: 16px;
 `;
 
 const Img = styled.img`
+
 `;
 
 const Last = styled.div`

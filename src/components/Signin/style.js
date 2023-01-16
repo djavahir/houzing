@@ -26,6 +26,7 @@ margin: 64px 0;
 const Span = styled.span`
 color: red;
 font-size: 20px;
+text-align: center;
 `;
 
 export { Container, Span, Content }

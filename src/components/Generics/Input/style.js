@@ -36,10 +36,11 @@ justify-content: center;
 align-items: center;
 font-size: ${({ fontSize }) => fontSize ? `${fontSize}px` : "14px"};
 height: ${({ height }) => height ? `${height}px` : "44px"};
+border: ${({ border }) => border ? `${border}` : "1px solid #E6E9EC"};
+border-bottom: ${({ borderBottom }) => borderBottom && `${borderBottom}`};
 width: ${({ width }) => width ? `${width}px` : "100%"};
 padding-left: ${({ icon }) => icon ? `35px` : "16px"};
 border-radius:2px;
-border: 1px solid #E6E9EC ;
 outline:none;
 :focus{
 border:1px solid #0061df;  
