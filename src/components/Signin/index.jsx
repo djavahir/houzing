@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Container, Span, Content } from "../Signin/style";
+import { Span, Content } from "./style";
 import { Button, Input } from "../Generics";
 import { useNavigate } from "react-router-dom";
 import { Link } from "../HouseItem/style";
@@ -44,28 +44,32 @@ const Signin = () => {
   };
 
   return (
-    <Container>
-      <Content>
-        <div className="subTitle">Sign in</div>
-        <Input
-          onFocus={() => setError(false)}
-          onChange={onChange}
-          type="email"
-          placeholder="email"
-        />
-        <Input
-          onFocus={() => setError(false)}
-          onChange={onChange}
-          type="password"
-          placeholder="password"
-        />
-        <Link signin href="">Forgot password?</Link>
-        {error && <Span>email or password is incorrect!</Span>}
-        <Button onClick={onSubmit} width="%">
-          {isLoggedIn ? "waiting..." : "Login"}
-        </Button>
-      </Content>
-    </Container>
+    <Content>
+      <div className="subTitle">Sign In</div>
+      <Input
+        borderBottom="1px solid #E6E9EC"
+        border="none"
+        onFocus={() => setError(false)}
+        onChange={onChange}
+        type="email"
+        placeholder="email"
+      />
+      <Input
+        borderBottom="1px solid #E6E9EC"
+        border="none"
+        onFocus={() => setError(false)}
+        onChange={onChange}
+        type="password"
+        placeholder="password"
+      />
+      <Link signin href="">
+        Forgot password?
+      </Link>
+      {error && <Span>email or password is incorrect!</Span>}
+      <Button onClick={onSubmit} width="%">
+        {isLoggedIn ? "waiting..." : "Login"}
+      </Button>
+    </Content>
   );
 };
 

@@ -11,13 +11,7 @@ width: 100%;
 border: 1px solid #E6E9EC;
 box-shadow: 0px 10px 30px rgba(13, 38, 59, 0.05);
 border-radius: 3px;
-margin: 44px 0;
+margin: 64px 0;
 `;
 
-const Span = styled.span`
-color: red;
-font-size: 20px;
-text-align: center;
-`;
-
-export { Span, Content }
+export { Content }

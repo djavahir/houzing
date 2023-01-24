@@ -3,7 +3,7 @@ import Hous from "../../../assets/imgs/uylar.jpg";
 import Houss from "../../../assets/imgs/uy.jpg";
 import { Content, Content2, Img, Wrapper } from "./style";
 
-const HousesImg = () => {
+const HousesImg = ({data}) => {
   return (
     <Wrapper>
       <Content>

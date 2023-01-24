@@ -1,9 +1,10 @@
 import { createContext, useReducer } from "react";
-import { reduser } from "./reducer";
-const PropertiesContext = createContext();
+import { reducer } from "./reducer";
+
+export const PropertiesContext = createContext();
 
 const PropertiesProvider = ({ children }) => {
-  const [state, dispatch] = useReducer(reduser, []);
+  const [state, dispatch] = useReducer(reducer, {});
   return (
     <PropertiesContext.Provider value={[state, dispatch]}>
       {children}

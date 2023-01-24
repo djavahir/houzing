@@ -60,6 +60,11 @@ body {
   overflow: hidden;
   white-space: nowrap;
 }
+.inlines {
+  overflow: hidden;
+  width: 226px;
+  height: 24px;
+}
 
 .slick-prev::before,
 .slick-next::before {

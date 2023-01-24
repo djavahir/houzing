@@ -16,6 +16,7 @@ export const Input = forwardRef(
       onFocus,
       border,
       borderBottom,
+      required,
     },
     ref
   ) => {
@@ -35,6 +36,7 @@ export const Input = forwardRef(
           height={height}
           onFocus={onFocus}
           border={border}
+          required={required}
           borderBottom={borderBottom}
         />
       </Wrapper>

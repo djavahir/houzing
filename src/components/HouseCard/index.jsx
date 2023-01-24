@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import {
   Button,
   Container,
   Content,
   Details,
   Divider,
+  Icon,
   Icons,
   Img,
   Like,
@@ -16,10 +17,12 @@ import Bed from "../../assets/icon/bed.svg";
 import Bath from "../../assets/icon/bath.svg";
 import Car from "../../assets/icon/car.svg";
 import Ruler from "../../assets/icon/ruler.svg";
-import Love from "../../assets/icon/love.svg";
 import Resize from "../../assets/icon/resize.svg";
+import { message } from "antd";
+import { PropertiesContext } from "../../context/properties";
 
 const HouseCard = ({ data = {}, gap, onClick }) => {
+  const [{ refetch }] = useContext(PropertiesContext);
   const {
     address,
     houseDetails,
@@ -30,9 +33,31 @@ const HouseCard = ({ data = {}, gap, onClick }) => {
     country,
     description,
     category,
+    favorite,
+    id,
   } = data;
+
+  const save = (event) => {
+    event?.stopPropagation();
+    fetch(
+      `https://houzing-app.herokuapp.com/api/v1/houses/addFavourite/${id}?favourite=${!favorite}`,
+      {
+        method: "PUT",
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      }
+    )
+      .then((res) => res.json())
+      .then((res) => {
+        if (favorite) res?.success && message.warning("Successfully disliked");
+        else res?.success && message.info("Successfully liked");
+        refetch && refetch();
+      });
+  };
+
   return (
-    <div style={{display:"flex"}} onClick={onClick}>
+    <div style={{ display: "flex" }} onClick={onClick}>
       <Container gap={gap}>
         <Button>Featured</Button>
         <Button right>For sale</Button>
@@ -67,15 +92,19 @@ const HouseCard = ({ data = {}, gap, onClick }) => {
         </Content>
         <Divider />
         <Content footer>
-          <Details.Item footer>
+          <Details.Item footer> 
             <div className="info">
               <del>${price || 0}/mo</del>
             </div>
             <div className="subTitle">${salePrice || 0}/mo</div>
           </Details.Item>
           <Details.Item icon>
-            <Like src={Resize} />
-            <Like src={Love} />
+            <Icon>
+              <Like src={Resize} />
+            </Icon>
+            <Icon favorite={favorite}>
+              <Icons.Love onClick={save} favorite={favorite} />
+            </Icon>
           </Details.Item>
         </Content>
       </Container>

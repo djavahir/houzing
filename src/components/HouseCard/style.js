@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { ReactComponent as love } from "../../assets/icon/love.svg";
 
 
 const Container = styled.div`
@@ -11,7 +12,6 @@ height: 429px;
 filter: drop-shadow(0px 20px 38px rgba(0,0,0,0.06)) drop-shadow(0px 7px 46px rgba(0,0,0,0.06))
 drop-shadow(0px 8px 15px rgba(0,0,0,0.06));
 }
-cursor: pointer;
 border: 1px solid #E6E9EC;
 border-radius: 3px;
 background: white;
@@ -47,7 +47,39 @@ flex-direction: ${({ icon }) => !icon && 'column'};
 
 const Icons = styled.img``;
 
+Icons.Love = styled(love)`
+fill: red;
+position: absolute;
+top: 11px;
+left: 9.5px;
+background: ${({ favorite }) => favorite && 'red' };
+path{
+  fill: ${({ favorite }) => favorite ? 'white' : 'red'};
+}
+:active{
+ transform: scale(0.9);
+}
+cursor: pointer;
+`;
+
+const Icon = styled.div`
+width: 35px;
+height: 35px;
+background: #F6F8F9;
+border-radius: 50%;
+position: relative;
+background: ${({ favorite }) => favorite && 'red'};
+
+`;
+
 const Like = styled.img`
+position: absolute;
+top: 11px;
+left: 9.5px;
+background: ${({ favorite }) => favorite && "red"};
+path{
+fill: ${({ favorite }) => favorite && "red"};
+}
 :active{
  transform: scale(0.9);
 }
@@ -98,4 +130,4 @@ right:23px;
 bottom: 190px
 `;
 
-export { User, Container, Button, Img, Content, Details, Divider, Like, Icons }
+export { User, Container, Icon, Button, Img, Content, Details, Divider, Like, Icons }
