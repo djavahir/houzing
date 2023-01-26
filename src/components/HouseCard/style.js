@@ -52,9 +52,9 @@ fill: red;
 position: absolute;
 top: 11px;
 left: 9.5px;
-background: ${({ favorite }) => favorite && 'red' };
+background: ${({ fav }) => fav && 'red' };
 path{
-  fill: ${({ favorite }) => favorite ? 'white' : 'red'};
+  fill: ${({ fav }) => fav ? 'white' : 'red'};
 }
 :active{
  transform: scale(0.9);
@@ -68,7 +68,7 @@ height: 35px;
 background: #F6F8F9;
 border-radius: 50%;
 position: relative;
-background: ${({ favorite }) => favorite && 'red'};
+background: ${({ fav }) => fav && 'red'};
 
 `;
 
@@ -76,9 +76,9 @@ const Like = styled.img`
 position: absolute;
 top: 11px;
 left: 9.5px;
-background: ${({ favorite }) => favorite && "red"};
+background: ${({ fav }) => fav && "red"};
 path{
-fill: ${({ favorite }) => favorite && "red"};
+fill: ${({ fav }) => fav && "red"};
 }
 :active{
  transform: scale(0.9);

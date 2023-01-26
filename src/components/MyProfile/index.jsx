@@ -1,7 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import Trash from "../../assets/icon/trash.svg";
-import Edit from "../../assets/icon/edit.svg";
 import noImg from "../../assets/imgs/noimg.png";
 import { Button } from "../Generics";
 import {
@@ -10,23 +8,43 @@ import {
   AntTables,
   Wrapper,
   Box,
-  Img,
   Wrap,
   User,
   UserImg,
+  ImgEdit,
+  ImgTrash,
 } from "./style";
 import useRequest from "../../hooks/useRequest";
+import { useQuery } from "react-query";
+import { message } from "antd";
 
 const MyProfile = () => {
-  const [data, setData] = useState([]);
   const { search } = useLocation();
   const navigate = useNavigate();
   const request = useRequest();
 
-  useEffect(() => {
-    request({ url: `/houses/me` }).then((res) => setData(res?.data || []));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [search]);
+  const { data, refetch } = useQuery([search], () => {
+    return request({ url: `/houses/me`, token: true });
+  });
+
+  const onDelete = (id) => {
+    request({ url: `/houses/${id}`, token: true, method: "DELETE" }).then(
+      (res) => {
+        if (res?.success) {
+          message.info("Successfully Delete");
+          refetch();
+        }
+      }
+    );
+  };
+
+  const onFeatured = () => {
+    navigate("/favourite");
+  };
+
+  const onForSale = () => {
+    navigate("/properties");
+  };
 
   const columns = [
     {
@@ -35,7 +53,9 @@ const MyProfile = () => {
       render: (data) => {
         return (
           <User wid>
-            <Buttons but>Featured</Buttons>
+            <Buttons onClick={onFeatured} but>
+              Featured
+            </Buttons>
             <UserImg
               src={
                 (data?.attachments && data?.attachments[0]?.imgPath) || noImg
@@ -50,7 +70,9 @@ const MyProfile = () => {
                   </div>
                   <div className="info">{data.address}</div>
                 </User>
-                <Buttons rig>FOR SALE</Buttons>
+                <Buttons onClick={onForSale} rig>
+                  FOR SALE
+                </Buttons>
               </User>
               <User flex>
                 <div className="info">
@@ -90,14 +112,24 @@ const MyProfile = () => {
       title: "Action",
       key: "action",
       width: 100,
-      render: () => {
+      render: (data) => {
         return (
           <Wrap>
             <Box>
-              <Img src={Edit} />
+              <ImgEdit
+                onClick={(event) => {
+                  event.stopPropagation();
+                  navigate(`/myprofile/editHouse/${data?.id}`);
+                }}
+              />
             </Box>
             <Box>
-              <Img src={Trash} />
+              <ImgTrash
+                onClick={(event) => {
+                  event.stopPropagation();
+                  onDelete(data?.id);
+                }}
+              />
             </Box>
           </Wrap>
         );
@@ -114,7 +146,17 @@ const MyProfile = () => {
         </Button>
       </Wrapper.Title>
       <Container>
-        <AntTables columns={columns} dataSource={data} />
+        <AntTables
+          onRow={(record) => {
+            return {
+              onClick: () => {
+                navigate(`/properties/${record?.id}`);
+              },
+            };
+          }}
+          columns={columns}
+          dataSource={data?.data}
+        />
       </Container>
     </Wrapper>
   );

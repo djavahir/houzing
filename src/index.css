@@ -60,6 +60,7 @@ body {
   overflow: hidden;
   white-space: nowrap;
 }
+
 .inlines {
   overflow: hidden;
   width: 226px;
@@ -76,4 +77,10 @@ body {
   width: 235px;
   height: 120px;
   margin-top: 10px;
+}
+
+.pre {
+  overflow: hidden;
+  max-width: 600px;
+  width: 100%;
 }

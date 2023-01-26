@@ -31,9 +31,6 @@ const Navbar = () => {
       <Menu.Item data-name="myprofile" onClick={onClickProfile}>
         My profile
       </Menu.Item>
-      <Menu.Item data-name="myproperties" onClick={onClickProfile}>
-        My Properties
-      </Menu.Item>
       <Menu.Item data-name="favourite" onClick={onClickProfile}>
         Favourites
       </Menu.Item>

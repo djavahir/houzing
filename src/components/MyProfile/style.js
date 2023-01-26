@@ -1,5 +1,7 @@
 import styled from "styled-components";
 import { Table } from 'antd';
+import { ReactComponent as trash } from "../../assets/icon/trash.svg";
+import { ReactComponent as edit } from "../../assets/icon/edit.svg";
 
 
 const Container = styled.div`
@@ -52,7 +54,7 @@ justify-content: center;
 align-items: center;
 `;
 
-const Img = styled.img`
+const ImgTrash = styled(trash)`
 position: absolute;
 top: 9px;
 left: 9px;
@@ -60,7 +62,28 @@ cursor: pointer;
 :active{
  transform: scale(0.9);
 }
+:hover{
+ & path{
+  fill: red;
+ }
+}
 `;
+
+const ImgEdit = styled(edit)`
+position: absolute;
+top: 9px;
+left: 9px;
+cursor: pointer;
+:active{
+ transform: scale(0.9);
+};
+:hover{
+ & path{
+  fill: blue;
+ }
+}
+`;
+
 const UserImg = styled.img`
 width: 113px;
 height: 113px;
@@ -97,4 +120,4 @@ margin: ${({ but }) => but && '4px'};
 cursor: pointer;
 `;
 
-export { Container, Buttons, User, UserImg, Wrap, Box, Img, Wrapper, AntTables }
+export { Container,ImgEdit, Buttons, User, UserImg, Wrap, Box, ImgTrash, Wrapper, AntTables }

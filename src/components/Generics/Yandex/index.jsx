@@ -14,7 +14,7 @@ const mapStyle = {
   overflow: "hidden",
 };
 
-const Yandex = ({ center }) => {
+export const Yandex = ({ center }) => {
   return (
     <YMaps
       query={{

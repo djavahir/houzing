@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Wrapper,
   MenuWrapper,
@@ -14,40 +14,65 @@ import { useFormik } from "formik";
 import useRequest from "../../hooks/useRequest";
 import { Checkbox } from "antd";
 import TextArea from "antd/es/input/TextArea";
-import { useEffect } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 
 const AddNewHouse = () => {
-  const [data, setData] = useState([]);
   const [imgs, setImgs] = useState([]);
+  const [initial, setInitial] = useState({
+    houseDetails: {},
+    homeAmenitiesDto: {},
+    componentsDto: {},
+    status: true,
+  });
+  const [category, setCategory] = useState([]);
   const [img, setImg] = useState("");
   const request = useRequest();
+  const navigate = useNavigate();
+  const { id } = useParams();
 
   const addImg = () => {
     if (!(imgs.length >= 4) && img) {
-      setImgs([...imgs, img]);
+      setImgs([
+        ...imgs,
+        { imgPath: img, id: `${img.length * Math.random()}${img}` },
+      ]);
       setImg("");
     }
   };
-  const onChange = ({ target: { checked } }) => {
-    console.log(`checked = ${checked}`);
-  };
 
+  // single house
   useEffect(() => {
-    request({
-      url: "/houses",
-      method: "POST",
-      me: false,
-    }).then((res) => setData(res?.data || []));
+    id &&
+      request({ url: `/houses/id/${id}`, token: true }).then((res) => {
+        setImgs(res?.data?.attachments);
+        setInitial({ ...res?.data });
+      });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  // category
+  useEffect(() => {
+    request({ url: "/categories/list" }).then((res) =>
+      setCategory(res?.data || [])
+    );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const formik = useFormik({
-    initialValues: {
-      houseDetails: {},
-      homeAmenitiesDto: {},
-    },
+    initialValues: initial,
+    enableReinitialize: true,
     onSubmit: (values) => {
-      console.log(values);
+      request({
+        url: id ? `/houses/${id}` : `/houses`,
+        method: id ? "PUT" : "POST",
+        token: true,
+        me: false,
+        body: { ...values, attachments: imgs },
+      }).then((res) => {
+        if (res?.success) {
+          navigate("/myprofile");
+        }
+      });
     },
   });
 
@@ -85,49 +110,59 @@ const AddNewHouse = () => {
           <h1 className="subTitle">House Details</h1>
           <Section>
             <Input
-              value={formik.values.area}
-              name="area"
+              value={formik.values.houseDetails.area}
+              name="houseDetails.area"
               onChange={formik.handleChange}
               placeholder={"Area"}
+              type="number"
             />
             <Input
-              value={formik.values.bath}
-              name="bath"
+              value={formik.values.houseDetails.bath}
+              type="number"
+              name="houseDetails.bath"
               onChange={formik.handleChange}
               placeholder={"Bath"}
             />
             <Input
-              value={formik.values.beds}
-              name="beds"
+              value={formik.values.houseDetails.beds}
+              type="number"
+              name="houseDetails.beds"
               onChange={formik.handleChange}
               placeholder={"Beds"}
             />
             <Input
-              value={formik.values.garage}
-              name="garage"
+              value={formik.values.houseDetails.garage}
+              type="number"
+              name="houseDetails.garage"
               onChange={formik.handleChange}
               placeholder={"Garage"}
             />
             <Input
-              value={formik.values.yearBuilt}
-              name="yearBuilt"
-              onChange={formik.handleChange}
-              placeholder={"Year Built"}
-            />
-            <Input
-              value={formik.values.room}
-              name="room"
+              value={formik.values.houseDetails.room}
+              type="number"
+              name="houseDetails.room"
               onChange={formik.handleChange}
               placeholder={"Room"}
             />
-            <SelectAnt
-              value={formik.values.room}
+            <Input
+              value={formik.values.houseDetails.yearBuilt}
+              type="number"
+              name="houseDetails.yearBuilt"
               onChange={formik.handleChange}
+              placeholder={"Year Built"}
+            />
+            <SelectAnt
+              value={formik.values.categoryId}
+              onChange={formik.handleChange}
+              defaultValue="Select Category"
             >
-              <SelectAnt.Option value={""}>Select Category</SelectAnt.Option>
-              {data.map((value) => {
+              {category.map((value) => {
                 return (
-                  <SelectAnt.Option key={value.id} value={value.id}>
+                  <SelectAnt.Option
+                    onChange={formik.handleChange}
+                    key={value.id}
+                    value={value.id}
+                  >
                     {value.name}
                   </SelectAnt.Option>
                 );
@@ -146,18 +181,21 @@ const AddNewHouse = () => {
               value={formik.values.zipCode}
               onChange={formik.handleChange}
               name="zipCode"
+              type="number"
               placeholder={"Zip Code"}
             />
             <Input
               value={formik.values.price}
               onChange={formik.handleChange}
               name="price"
+              type="number"
               placeholder={"Price"}
             />
             <Input
               value={formik.values.salePrice}
               onChange={formik.handleChange}
               name="salePrice"
+              type="number"
               placeholder={"Sale Price"}
             />
           </Section>
@@ -167,7 +205,7 @@ const AddNewHouse = () => {
               onChange={({ target: { value } }) => setImg(value)}
               placeholder="Add Image URL"
             />
-            <Button onClick={addImg} disabled={imgs.length >= 4}>
+            <Button type={"button"} onClick={addImg} disabled={imgs.length >= 4}>
               Add Image URL
             </Button>
           </Section>
@@ -175,7 +213,9 @@ const AddNewHouse = () => {
             {imgs.map((value) => {
               return (
                 <Box im>
-                  <pre>{value}</pre>
+                  <pre className="pre" style={{ cursor: "pointer" }}>
+                    {value?.imgPath}
+                  </pre>
                   <Boxx>
                     <Img
                       onClick={() => {
@@ -190,63 +230,145 @@ const AddNewHouse = () => {
             })}
           </Section>
           <Section>
-            <TextArea placeholder="description" name="description" />
+            <TextArea
+              onChange={formik.handleChange}
+              placeholder="description"
+              name="description"
+              value={formik.values.description}
+            />
           </Section>
           <h1 className="subTitle">Amenities</h1>
           <Wrap>
             <Box>
               <div>
-                <Checkbox onChange={onChange}>Bus Stop</Checkbox>
+                <Checkbox
+                  onChange={formik.handleChange}
+                  name="homeAmenitiesDto.busStop"
+                >
+                  Bus Stop
+                </Checkbox>
               </div>
               <div>
-                <Checkbox onChange={onChange}>Garden</Checkbox>
+                <Checkbox
+                  onChange={formik.handleChange}
+                  name="homeAmenitiesDto.garden"
+                >
+                  Garden
+                </Checkbox>
               </div>
               <div>
-                <Checkbox onChange={onChange}>Market</Checkbox>
+                <Checkbox
+                  onChange={formik.handleChange}
+                  name="homeAmenitiesDto.market"
+                >
+                  Market
+                </Checkbox>
               </div>
               <div>
-                <Checkbox onChange={onChange}>Park</Checkbox>
+                <Checkbox
+                  onChange={formik.handleChange}
+                  name="homeAmenitiesDto.park"
+                >
+                  Park
+                </Checkbox>
               </div>
               <div>
-                <Checkbox onChange={onChange}>Parking</Checkbox>
+                <Checkbox
+                  onChange={formik.handleChange}
+                  name="homeAmenitiesDto.parking"
+                >
+                  Parking
+                </Checkbox>
               </div>
             </Box>
             <Box>
               <div>
-                <Checkbox onChange={onChange}>School</Checkbox>
+                <Checkbox
+                  onChange={formik.handleChange}
+                  name="homeAmenitiesDto.school"
+                >
+                  School
+                </Checkbox>
               </div>
               <div>
-                <Checkbox onChange={onChange}>Stadium</Checkbox>
+                <Checkbox
+                  onChange={formik.handleChange}
+                  name="homeAmenitiesDto.stadium"
+                >
+                  Stadium
+                </Checkbox>
               </div>
               <div>
-                <Checkbox onChange={onChange}>Subway</Checkbox>
+                <Checkbox
+                  onChange={formik.handleChange}
+                  name="homeAmenitiesDto.subway"
+                >
+                  Subway
+                </Checkbox>
               </div>
               <div>
-                <Checkbox onChange={onChange}>Super Market</Checkbox>
+                <Checkbox
+                  onChange={formik.handleChange}
+                  name="homeAmenitiesDto.superMarket"
+                >
+                  Super Market
+                </Checkbox>
               </div>
               <div>
-                <Checkbox onChange={onChange}>TV</Checkbox>
+                <Checkbox
+                  onChange={formik.handleChange}
+                  name="componentsDto.tv"
+                >
+                  TV
+                </Checkbox>
               </div>
             </Box>
             <Box>
               <div>
-                <Checkbox onChange={onChange}>Air Condition</Checkbox>
+                <Checkbox
+                  onChange={formik.handleChange}
+                  name="componentsDto.airCondition"
+                >
+                  Air Condition
+                </Checkbox>
               </div>
               <div>
-                <Checkbox onChange={onChange}>Courtyard</Checkbox>
+                <Checkbox
+                  onChange={formik.handleChange}
+                  name="componentsDto.courtyard"
+                >
+                  Courtyard
+                </Checkbox>
               </div>
               <div>
-                <Checkbox onChange={onChange}>Furniture</Checkbox>
+                <Checkbox
+                  onChange={formik.handleChange}
+                  name="componentsDto.furniture"
+                >
+                  Furniture
+                </Checkbox>
               </div>
               <div>
-                <Checkbox onChange={onChange}>GasStove</Checkbox>
+                <Checkbox
+                  onChange={formik.handleChange}
+                  name="componentsDto.gasStove"
+                >
+                  Gas Stove
+                </Checkbox>
               </div>
               <div>
-                <Checkbox onChange={onChange}>Internet</Checkbox>
+                <Checkbox
+                  onChange={formik.handleChange}
+                  name="componentsDto.internet"
+                >
+                  Internet
+                </Checkbox>
               </div>
             </Box>
           </Wrap>
-          <Button>Save</Button>
+          <Section end="true">
+            <Button>{id ? "Update" : "Save"}</Button>
+          </Section>
         </MenuWrapper>
       </form>
     </Wrapper>

@@ -17,10 +17,13 @@ margin-bottom: 96px;
 `;
 
 const Section = styled.div`
-margin-bottom: 20px;
 display: flex;
 gap: 20px;
+justify-content: ${({ end }) => end && 'end'} ;
+margin-top: ${({ end }) => !end && '20px'} ;
+margin-bottom: ${({ en }) => en && '20px'} ;
 flex-direction: ${({ fle }) => fle && 'column'};
+flex-direction: ${({ en }) => en && 'column'};
 font-size: ${({ fle }) => fle && '16px'};
 color: ${({ fle }) => fle && 'red'};
 
@@ -72,7 +75,7 @@ cursor: pointer;
 :hover{
  path{
  fill: ${({ fav }) =>
-  fav && 'red'};
+    fav && 'red'};
 }
 }`;
 

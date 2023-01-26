@@ -20,9 +20,11 @@ import Ruler from "../../assets/icon/ruler.svg";
 import Resize from "../../assets/icon/resize.svg";
 import { message } from "antd";
 import { PropertiesContext } from "../../context/properties";
+import { useNavigate } from "react-router-dom";
 
 const HouseCard = ({ data = {}, gap, onClick }) => {
   const [{ refetch }] = useContext(PropertiesContext);
+  const navigate = useNavigate();
   const {
     address,
     houseDetails,
@@ -56,11 +58,22 @@ const HouseCard = ({ data = {}, gap, onClick }) => {
       });
   };
 
+  const onFeatured = (event) => {
+    event.stopPropagation();
+    navigate(`/favourite`);
+  };
+  const onForSale = (event) => {
+    event.stopPropagation();
+    navigate(`/properties/${id}`);
+  };
+
   return (
     <div style={{ display: "flex" }} onClick={onClick}>
       <Container gap={gap}>
-        <Button>Featured</Button>
-        <Button right>For sale</Button>
+        <Button onClick={onFeatured}>Featured</Button>
+        <Button onClick={onForSale} right>
+          For sale
+        </Button>
         <Img src={(attachments && attachments[0]?.imgPath) || noImg} />
         <Content>
           <User src={(attachments && attachments[1]?.imgPath) || user} />
@@ -92,7 +105,7 @@ const HouseCard = ({ data = {}, gap, onClick }) => {
         </Content>
         <Divider />
         <Content footer>
-          <Details.Item footer> 
+          <Details.Item footer>
             <div className="info">
               <del>${price || 0}/mo</del>
             </div>
@@ -102,8 +115,8 @@ const HouseCard = ({ data = {}, gap, onClick }) => {
             <Icon>
               <Like src={Resize} />
             </Icon>
-            <Icon favorite={favorite}>
-              <Icons.Love onClick={save} favorite={favorite} />
+            <Icon fav={favorite} >
+              <Icons.Love onClick={save} fav={favorite} />
             </Icon>
           </Details.Item>
         </Content>

@@ -16,6 +16,7 @@ export const navbar = [
  { id: useId, element: <Register />, title: "Register", path: "/signin", private: false, hidden: true },
  { id: useId, element: <Favourite />, title: "Favourite", path: "/favourite", private: true, hidden: true },
  { id: useId, element: <AddNewHouse />, title: "Add New House", path: "/myprofile/newhouse", private: true, hidden: true },
+ { id: useId, element: <AddNewHouse />, title: "Add New House", path: "/myprofile/editHouse/:id", private: true, hidden: true },
  { id: useId, element: <MyProfile />, title: "My  Profile", path: "/myprofile", private: true, hidden: true },
  { id: useId, element: <h1>Generic Sign Up</h1>, title: "Sign Up", path: "/signup", private: false, hidden: true },
 ];
