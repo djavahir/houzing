@@ -1,19 +1,19 @@
 import React from "react";
 import { Container, AntTabs } from "./style";
-import SignIn from "../SignIn";
-import SignUp from "../Signup";
+import Signin from "../SignIn";
+import Signup from "../Signup";
 
 export const Register = () => {
   const items = [
     {
       key: "1",
       label: `Sign In`,
-      children: <SignIn />,
+      children: <Signin />,
     },
     { 
       key: "2",
       label: `Sign Up`,
-      children: <SignUp />,
+      children: <Signup />,
     },
   ];
 
