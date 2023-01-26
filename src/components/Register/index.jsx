@@ -1,6 +1,6 @@
 import React from "react";
 import { Container, AntTabs } from "./style";
-import Signin from "../SignIn";
+import Signin from "../Signin";
 import Signup from "../Signup";
 
 export const Register = () => {
