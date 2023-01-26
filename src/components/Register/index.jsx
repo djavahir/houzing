@@ -1,6 +1,6 @@
 import React from "react";
 import { Container, AntTabs } from "./style";
-import Signin from "../SignIn";
+import SignIn from "../SignIn";
 import SignUp from "../Signup";
 
 export const Register = () => {
@@ -8,7 +8,7 @@ export const Register = () => {
     {
       key: "1",
       label: `Sign In`,
-      children: <Signin />,
+      children: <SignIn />,
     },
     { 
       key: "2",
