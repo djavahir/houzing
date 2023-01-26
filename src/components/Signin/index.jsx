@@ -4,7 +4,7 @@ import { Button, Input } from "../Generics";
 import { useNavigate } from "react-router-dom";
 import { Link } from "../HouseItem/style";
 
-const SignIn = () => {
+export const SignIn = () => {
   const [body, setBody] = useState({});
   const navigate = useNavigate();
   const [error, setError] = useState();
