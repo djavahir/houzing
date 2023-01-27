@@ -8,7 +8,7 @@ background: #0D263B;
 const Container = styled.div`
 display: flex;
 width: 100%;
-justify-content: space-around;
+justify-content: space-between;
 padding: 0 130px;
 padding-top: 48px;
 `;
@@ -20,6 +20,7 @@ font-weight: 400;
 font-size: 14px;
 line-height: 20px;
 color: #FFFFFF;
+max-width: 293px;
 margin-bottom: ${({ info }) => !info && '20px'};
 `;
 
@@ -40,7 +41,6 @@ color: white;
 const Content = styled.div`
 display: flex;
 flex-direction: column;
-width: 295px;
 `;
 
 Content.Item = styled.div`
@@ -67,9 +67,7 @@ align-items: center;
 padding-top: 16px;
 `;
 
-const Img = styled.img`
-
-`;
+const Img = styled.img``;
 
 const Last = styled.div`
 display: flex;
