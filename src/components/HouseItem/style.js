@@ -4,7 +4,7 @@ const Container = styled.div`
 display: flex;
 flex-direction: column;
 margin: ${({ det }) => !det && 'auto'};
-max-width: 880px;
+max-width: ${({ det }) => !det && '880px'};
 width: 100%;
 `;
 
@@ -144,7 +144,7 @@ background: ${({ dec }) => dec && "linear-gradient(180deg, rgba(255, 255, 255, 0
 
 const Wrapp = styled.div`
 display: flex;
-justify-content: space-between;
+justify-content: ${({ bottom }) => bottom ? "end" : "space-between"};
 padding-bottom: 48px;
 margin-bottom: 48px;
 gap: ${({ gap }) => gap && '20px'};

@@ -28,6 +28,7 @@ const Category = () => {
         setData(res?.data || []);
       });
   }, []);
+
   return (
     <Container>
       <Title>

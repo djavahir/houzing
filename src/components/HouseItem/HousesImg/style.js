@@ -1,28 +1,57 @@
 import styled from "styled-components";
 
-const Wrapper = styled.div`
-display: flex;
-max-width: 880px;
-width: 100%;
-height: 400px;
-gap: 20px;
-`;
-const Content = styled.div`
-display: flex;
-max-width: 580px;
-height: 100%;
-width: 100%;
-`;
-const Content2 = styled.div`
-display: flex;
-flex-direction: column;
-max-width: 280px;
-height: 100%;
-gap: 20px;
-width: 100%;
+const ImageContainer = styled.div`
+  display: flex;
+  width: 100%;
 `;
 
-const Img = styled.img`
-width: 100%;
+const ImgContainer = styled.div`
+  display: flex;
+  gap: 20px;
+  margin-left: 20px;
+  flex-wrap: wrap;
 `;
-export { Img,Content,Content2, Wrapper }
+
+ImageContainer.Main = styled.img`
+  width: 100%;
+  max-width: 580px;
+  max-height: 400px;
+`;
+
+ImageContainer.Subimg = styled.img`
+  position: relative;
+  width: 100%;
+  max-width: 280px;
+  max-height: 190px;
+`;
+const Blur = styled.div`
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-family: bold;
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 36px;
+  line-height: 44px;
+  /* identical to box height, or 122% */
+  letter-spacing: -0.02em;
+  color: #ffffff;
+  width: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+`;
+Blur.Container = styled.div`
+  position: relative;
+  width: 100%;
+  max-width: 280px;
+  max-height: 190px;
+`;
+
+
+export { ImageContainer, ImgContainer, Blur }

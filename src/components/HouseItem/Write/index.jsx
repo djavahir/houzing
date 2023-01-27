@@ -86,7 +86,7 @@ const Write = () => {
         </Boxs>
         <div className="info">Enter Your Message</div>
       </Wrapp>
-      <Wrapp bottom>
+      <Wrapp bottom="true">
         <Button width={"250"}>Send your review</Button>
       </Wrapp>
     </Container>

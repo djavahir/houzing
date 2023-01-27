@@ -46,7 +46,7 @@ const Schedule = () => {
         </Boxs>
         <div className="info">Enter Your Message</div>
       </Wrapp>
-      <Wrapp>
+      <Wrapp bottom="true">
         <Button width={"250"}>Submit a tour request</Button>
       </Wrapp>
     </Container>

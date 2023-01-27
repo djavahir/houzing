@@ -31,13 +31,11 @@ const AddNewHouse = () => {
   const { id } = useParams();
 
   const addImg = () => {
-    if (!(imgs.length >= 4) && img) {
-      setImgs([
-        ...imgs,
-        { imgPath: img, id: `${img.length * Math.random()}${img}` },
-      ]);
-      setImg("");
-    }
+    setImgs([
+      ...imgs,
+      { imgPath: img, id: `${img.length * Math.random()}${img}` },
+    ]);
+    setImg("");
   };
 
   // single house
@@ -83,28 +81,32 @@ const AddNewHouse = () => {
           <h1 className="subTitle">Address</h1>
           <Section>
             <Input
-              value={formik.values.country}
+              value={formik.values.country || ""}
               onChange={formik.handleChange}
               name="country"
               placeholder={"Country"}
+              required
             />
             <Input
-              value={formik.values.region}
+              value={formik.values.region || ""}
               onChange={formik.handleChange}
               name="region"
               placeholder={"Region"}
+              required
             />
             <Input
-              value={formik.values.city}
+              value={formik.values.city || ""}
               onChange={formik.handleChange}
               name="city"
               placeholder={"City"}
+              required
             />
             <Input
-              value={formik.values.address}
+              value={formik.values.address || ""}
               onChange={formik.handleChange}
               name="address"
               placeholder={"Address"}
+              required
             />
           </Section>
           <h1 className="subTitle">House Details</h1>
@@ -122,6 +124,7 @@ const AddNewHouse = () => {
               name="houseDetails.bath"
               onChange={formik.handleChange}
               placeholder={"Bath"}
+              required
             />
             <Input
               value={formik.values.houseDetails.beds}
@@ -129,6 +132,7 @@ const AddNewHouse = () => {
               name="houseDetails.beds"
               onChange={formik.handleChange}
               placeholder={"Beds"}
+              required
             />
             <Input
               value={formik.values.houseDetails.garage}
@@ -136,6 +140,7 @@ const AddNewHouse = () => {
               name="houseDetails.garage"
               onChange={formik.handleChange}
               placeholder={"Garage"}
+              required
             />
             <Input
               value={formik.values.houseDetails.room}
@@ -143,6 +148,7 @@ const AddNewHouse = () => {
               name="houseDetails.room"
               onChange={formik.handleChange}
               placeholder={"Room"}
+              required
             />
             <Input
               value={formik.values.houseDetails.yearBuilt}
@@ -150,6 +156,7 @@ const AddNewHouse = () => {
               name="houseDetails.yearBuilt"
               onChange={formik.handleChange}
               placeholder={"Year Built"}
+              required
             />
             <SelectAnt
               value={formik.values.categoryId}
@@ -172,31 +179,35 @@ const AddNewHouse = () => {
           <h1 className="subTitle">Price</h1>
           <Section>
             <Input
-              value={formik.values.name}
+              value={formik.values.name || ""}
               onChange={formik.handleChange}
               name="name"
               placeholder={"Name"}
+              required
             />
             <Input
-              value={formik.values.zipCode}
+              value={formik.values.zipCode || ""}
               onChange={formik.handleChange}
               name="zipCode"
               type="number"
               placeholder={"Zip Code"}
+              required
             />
             <Input
-              value={formik.values.price}
+              value={formik.values.price || ""}
               onChange={formik.handleChange}
               name="price"
               type="number"
               placeholder={"Price"}
+              required
             />
             <Input
-              value={formik.values.salePrice}
+              value={formik.values.salePrice || ""}
               onChange={formik.handleChange}
               name="salePrice"
               type="number"
               placeholder={"Sale Price"}
+              required
             />
           </Section>
           <Section>
@@ -205,7 +216,7 @@ const AddNewHouse = () => {
               onChange={({ target: { value } }) => setImg(value)}
               placeholder="Add Image URL"
             />
-            <Button type={"button"} onClick={addImg} disabled={imgs.length >= 4}>
+            <Button type={"button"} onClick={addImg}>
               Add Image URL
             </Button>
           </Section>

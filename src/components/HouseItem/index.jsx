@@ -10,7 +10,6 @@ import Review from "./Review";
 import Write from "./Write";
 import Similar from "./Similar";
 import HousesImg from "./HousesImg";
-import HousImgs from "./HousImgs";
 
 const HouseItem = () => {
   const params = useParams();
@@ -30,11 +29,11 @@ const HouseItem = () => {
       });
   }, [params?.id]);
 
+
   return (
     <React.Fragment>
       <Wrapper bot>
-        <HousesImg data={data}/>
-        <HousImgs data={data} />
+        <HousesImg data={data} />
       </Wrapper>
       <Wrapper bot>
         <Luxury data={data} />

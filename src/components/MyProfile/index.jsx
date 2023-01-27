@@ -115,7 +115,12 @@ const MyProfile = () => {
       render: (data) => {
         return (
           <Wrap>
-            <Box>
+            <Box
+              onClick={(event) => {
+                event.stopPropagation();
+                navigate(`/myprofile/editHouse/${data?.id}`);
+              }}
+            >
               <ImgEdit
                 onClick={(event) => {
                   event.stopPropagation();
@@ -123,7 +128,12 @@ const MyProfile = () => {
                 }}
               />
             </Box>
-            <Box>
+            <Box
+              onClick={(event) => {
+                event.stopPropagation();
+                onDelete(data?.id);
+              }}
+            >
               <ImgTrash
                 onClick={(event) => {
                   event.stopPropagation();

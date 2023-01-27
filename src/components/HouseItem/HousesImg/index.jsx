@@ -1,19 +1,36 @@
 import React from "react";
-import Hous from "../../../assets/imgs/uylar.jpg";
-import Houss from "../../../assets/imgs/uy.jpg";
-import { Content, Content2, Img, Wrapper } from "./style";
+import NoImg from "../../../assets/imgs/noimg.png";
+import { ImageContainer, ImgContainer,Blur } from "./style";
 
-const HousesImg = ({data}) => {
+const HousesImg = ({ data }) => {
   return (
-    <Wrapper>
-      <Content>
-        <Img src={Hous} />
-      </Content>
-      <Content2>
-        <Img src={Houss} />
-        <Img src={Houss} />
-      </Content2>
-    </Wrapper>
+    <ImageContainer>
+      <ImageContainer.Main
+        src={(data?.attachments && data?.attachments[0]?.imgPath) || NoImg}
+        alt="test"
+      />
+      <ImgContainer>
+        {data?.attachments &&
+          data?.attachments?.slice(1, 5).map((value, index) => {
+            return data?.attachments?.length > 5 && index === 3 ? (
+              <Blur.Container>
+                <ImageContainer.Subimg
+                  key={value.id}
+                  src={value?.imgPath}
+                  alt="test"
+                />
+                <Blur>+{data?.attachments?.length - 5}</Blur>
+              </Blur.Container>
+            ) : (
+              <ImageContainer.Subimg
+                key={value.id}
+                src={value?.imgPath}
+                alt="test"
+              />
+            );
+          })}
+      </ImgContainer>
+    </ImageContainer>
   );
 };
 
