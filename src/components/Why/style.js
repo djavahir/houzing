@@ -2,12 +2,11 @@ import styled from "styled-components";
 
 
 const Container = styled.div`
-position: relative;
 height: 400px;
 display: flex;
-margin: auto;
 flex-direction: column;
 background: #F5F7FC;
+width: 100%;
 `;
 
 const Title = styled.div`
@@ -36,16 +35,15 @@ display: flex;
 align-items: center;
 justify-content: space-between;
 padding: 40px 130px;
-max-width: 1440px;
 width: 100%;
-gap: 77px;
 `;
 
 const Content = styled.div`
 display: flex;
 align-items: center;
 flex-direction: column;
-width: 230px;
+max-width: 230px;
+width: 100%;
 height: 230px;
 text-align: center;
 `;
