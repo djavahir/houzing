@@ -15,6 +15,20 @@ margin-bottom: 48px;
 
 const Wrapper = styled.div``;
 
+
+const Box = styled.div`
+display: flex;
+flex-direction: column;
+`;
+
+
+const Wrap = styled.div`
+display: flex;
+align-items: center;
+justify-content: center;
+margin-top: 100px;
+`;
+
 Wrapper.SubTitle = styled.div`
 font-weight: 600;
 font-size: 28px;
@@ -39,4 +53,4 @@ justify-content: center;
 flex-direction: column;
 gap: 8px;`;
 
-export { Container, Wrapper }
+export { Container,Box, Wrapper, Wrap }

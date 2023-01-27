@@ -3,7 +3,8 @@ import { useQuery } from "react-query";
 import { useLocation, useNavigate } from "react-router-dom";
 import { PropertiesContext } from "../../context/properties";
 import HouseCard from "../HouseCard";
-import { Container, Wrapper } from "./style";
+import { Box, Container, Wrap, Wrapper } from "./style";
+import {Button} from "../Generics"
 const { REACT_APP_BASE_URL } = process.env;
 
 const Favourite = () => {
@@ -36,6 +37,11 @@ const Favourite = () => {
     navigate(`/properties/${id}`);
   };
 
+  const onRegister=()=>{
+    navigate(`/signin`);
+
+  }
+
   return (
     <Wrapper>
       <Wrapper.Title>
@@ -56,7 +62,12 @@ const Favourite = () => {
             );
           })
         ) : (
-          <h1>No Data Found</h1>
+          <Box>
+            <h1>No Data Found</h1>
+            <Wrap>
+              <Button onClick={onRegister} width={200}>Register</Button>
+            </Wrap>
+          </Box>
         )}
       </Container>
     </Wrapper>
