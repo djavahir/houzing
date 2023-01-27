@@ -10,7 +10,7 @@ const Write = () => {
       <Description mb>
         <div className="subTitle">Write a Review</div>
       </Description>
-      <Wrapp bottom>
+      <Wrapp>
         <Boxs>
           <Flex wrap='true'>
             <div className="info">Cleanliness</div>

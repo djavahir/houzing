@@ -12,7 +12,7 @@ const Review = ({ data }) => {
       <Description mb>
         <div className="subTitle">4.67 (14 reviews)</div>
       </Description>
-      <Wrapp bottom>
+      <Wrapp>
         <Boxs>
           <Flex wrap='true'>
             <div className="info">Cleanliness</div>
