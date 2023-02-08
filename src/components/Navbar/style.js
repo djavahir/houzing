@@ -11,6 +11,9 @@ const Main = styled.div`
 display: flex;
 justify-content: center;
 background: var(--colorPrimary);
+position: sticky;
+top: 0;
+z-index: 999;
 `;
 
 const Wrapper = styled.div`
