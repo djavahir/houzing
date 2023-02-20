@@ -47,7 +47,7 @@ height: 36px;
 const Link = styled(NavLink)`
 text-decoration:none;
 padding: 0 32px;
-color: #ffff;
+color: red;
 `;
 
 const Menu = styled.div`
