@@ -34,7 +34,7 @@ align-items: center;
 gap: 11.62px;
 cursor: ${({ logos }) => logos && 'pointer'};
 .active{
- color: yellowgreen;
+ color: skyblue;
 }
 `;
 
@@ -47,7 +47,7 @@ height: 36px;
 const Link = styled(NavLink)`
 text-decoration:none;
 padding: 0 32px;
-color: red;
+color: #fff;
 `;
 
 const Menu = styled.div`
